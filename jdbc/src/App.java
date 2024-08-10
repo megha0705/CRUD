@@ -6,7 +6,7 @@ public class App {
         Scanner sc = new Scanner(System.in);
         int choice =  sc.nextInt();
         boolean n = true;
-        Database db = new Database();
+        DB db = new DB();
         while(n){
             switch (choice) {
                 case 1: db.selectTable();

@@ -30,8 +30,6 @@ public class App {
                 case 5 : db.descTable();
                 break;
                 case 6: n = false;
-                default:
-                String email = sc.nextLine();
                  break;
             }
         }

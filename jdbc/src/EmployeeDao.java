@@ -55,25 +55,20 @@ public class EmployeeDao{
 
     }
 
-    public static void descEmployee() {
-        try{
+    public static ArrayList<Employee> descEmployee() throws SQLException {
+       ArrayList<Employee> emp_list = new ArrayList<Employee>();
             Connection con = Conn.connect();
             String query = Query.desc;
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(query);
             while(rs.next()){
-                /*System.out.println(rs.getString(1 ));
-                System.out.println(rs.getString(2));
-                System.out.println(rs.getString(3));
-                System.out.println(rs.getString(4));
-                System.out.println(rs.getString(5));
-                System.out.println(rs.getString(6));*/
-
+               Employee emp = new Employee(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4), rs.getString(5), rs.getString(6));
+             emp_list.add(emp);
             }
+            stm.close();
+            return emp_list;
         
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        
     }
 
 }

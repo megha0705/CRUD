@@ -32,13 +32,16 @@ public class App {
                 EmployeeDao.createEmployee(emp); 
                 break;
                 /*case 4: System.out.println("what do u wanna update? 1 - id , 2 - name , 3 - email, 4 - salary. please provide the updated value too"); 
-                        id = sc.nextInt();
+                       id = sc.nextInt();
                        sc.nextLine();
                         name = sc.nextLine();
                        Employee emp = new Employee(id , name);
 
                 break;*/
-                case 5 :  EmployeeDao.descEmployee(); 
+                case 5 : ArrayList<Employee> list =  EmployeeDao.descEmployee(); 
+                        for(Employee descList : list){
+                            System.out.println(descList.descTable());
+                        }
                 break;
                 case 6: n = false;
                  break;

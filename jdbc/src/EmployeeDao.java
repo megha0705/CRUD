@@ -1,34 +1,43 @@
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class EmployeeDao{
     
 
-    public static void selectEmployee(){
-        try{
-            Connection con = Conn.connect();
-        String query = Query.select;
-        Statement stm = con.createStatement();
-        ResultSet rs  =  stm.executeQuery(query);
-       while(rs.next()){
-        System.out.println("id - >" + rs.getInt(1));
-        System.out.println("name - >" + rs.getString(2));
-        System.out.println("email - >" + rs.getString(3));
-        System.out.println("salary - >" + rs.getInt(4));
-       }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+    public static ArrayList<Employee> selectEmployee() throws SQLException{
+        ArrayList<Employee> emp_list = new ArrayList<Employee>();
         
+            Connection con = Conn.connect();
+            String query = Query.select;
+            Statement stm = con.createStatement();
+            ResultSet rs  =  stm.executeQuery(query);
+       while(rs.next()){
+           Employee emp = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+           emp_list.add(emp);
+        }
+        stm.close();
+         
+        return emp_list;
     }
 
     public static void deleteEmployee() {
-       
+       try{
+        Connection con = Conn.connect();
+        String query = Query.delete;
+        Statement stm =  con.createStatement();
+        stm.execute(query);
+        System.out.println("table is deleted succesfully");
+       }catch(Exception e){
+        e.printStackTrace();
+       }
     }
 
-    public static void createEmployee(Employee emp) {
+    public static  void createEmployee(Employee emp) {
         try{
             Connection con = Conn.connect();
             String query = Query.insert;
@@ -47,7 +56,24 @@ public class EmployeeDao{
     }
 
     public static void descEmployee() {
+        try{
+            Connection con = Conn.connect();
+            String query = Query.desc;
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+            while(rs.next()){
+                /*System.out.println(rs.getString(1 ));
+                System.out.println(rs.getString(2));
+                System.out.println(rs.getString(3));
+                System.out.println(rs.getString(4));
+                System.out.println(rs.getString(5));
+                System.out.println(rs.getString(6));*/
+
+            }
         
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }

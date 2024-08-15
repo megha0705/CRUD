@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 import java.util.Scanner;
 
+import javax.sound.midi.Synthesizer;
+
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -31,13 +33,48 @@ public class App {
                 Employee emp = new Employee(id , name , email, salary);
                 EmployeeDao.createEmployee(emp); 
                 break;
-                /*case 4: System.out.println("what do u wanna update? 1 - id , 2 - name , 3 - email, 4 - salary. please provide the updated value too"); 
-                       id = sc.nextInt();
-                       sc.nextLine();
-                        name = sc.nextLine();
-                       Employee emp = new Employee(id , name);
+                case 4: System.out.println("what column u wanna update ? 1 => name || 2 => email || 3 => salary || 4 => id");
+                String columnType = " ";
+                int num = sc.nextInt();
+                if(num == 1){
+                    columnType = "name";
+                    System.out.println("write updated value");
+                    name = sc.nextLine();
+                }else if (num == 2){
+                    columnType = " eamil";
+                    System.out.println("write updated value");
+                    email = sc.nextLine();
+                }else if(num == 3){
+                    columnType = "salary";
+                    System.out.println("write updated value");
+                    salary = sc.nextInt();
+                }else{
+                    columnType = "id";
+                    System.out.println("write updated value");
+                    id = sc.nextInt();
+                }
+                System.out.println("what is the condition column ? 1 => name || 2 => email || 3 => salary || 4 => id");
+                String conditionColumn = " ";
+                int nums = sc.nextInt();
+                if(nums == 1){
+                    conditionColumn = "name";
+                    System.out.println("write condition value");
+                    name = sc.nextLine();
+                }else if (nums == 2){
+                    conditionColumn = "email";
+                    System.out.println("write condition value");
+                    email = sc.nextLine();
+                }else if (nums == 3){
+                    conditionColumn = "salary";
+                    System.out.println("write condition value");
+                    salary = sc.nextInt();
+                }else if(nums == 4){
+                    conditionColumn = "id";
+                    System.out.println("write condition value");
+                    id = sc.nextInt();
+                }
 
-                break;*/
+                break;
                 case 5 : ArrayList<Employee> list =  EmployeeDao.descEmployee(); 
                         for(Employee descList : list){
                             System.out.println(descList.descTable());

@@ -33,7 +33,7 @@ public class App {
                 Employee emp = new Employee(id , name , email, salary);
                 EmployeeDao.createEmployee(emp); 
                 break;
-                case 4: System.out.println("what column u wanna update ? 1 => name || 2 => email || 3 => salary || 4 => id");
+                case 4:  System.out.println("what column u wanna update ? 1 => name || 2 => email || 3 => salary || 4 => id");
                 String columnType = " ";
                 int num = sc.nextInt();
                 if(num == 1){
@@ -53,6 +53,7 @@ public class App {
                     System.out.println("write updated value");
                     id = sc.nextInt();
                 }
+                columnTypes(columnType);
                 System.out.println("what is the condition column ? 1 => name || 2 => email || 3 => salary || 4 => id");
                 String conditionColumn = " ";
                 int nums = sc.nextInt();
@@ -73,7 +74,8 @@ public class App {
                     System.out.println("write condition value");
                     id = sc.nextInt();
                 }
-
+                conditionTypes(conditionColumn);
+                
                 break;
                 case 5 : ArrayList<Employee> list =  EmployeeDao.descEmployee(); 
                         for(Employee descList : list){
@@ -85,5 +87,27 @@ public class App {
             }
             n = false;
         }
+        
     }
+   
+
+    private static String columnTypes(String columnType) {
+      
+       return columnType;
+    }
+
+
+   
+
+    public static String conditionTypes(String  conditionColumn) {
+        
+        return conditionColumn;
+        
+    }
+   
+   
 }
+
+
+
+

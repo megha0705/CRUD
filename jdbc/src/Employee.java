@@ -3,6 +3,8 @@ public class Employee {
     private String name;
     private String email;
     private int salary;
+
+    
     private String field;
     private String type;
     private String Null;
@@ -24,6 +26,7 @@ public class Employee {
         this.Default = Default;
         this.extra = extra;
     }
+   
     public int getId(){
         return id;
     }
@@ -36,10 +39,11 @@ public class Employee {
     public int getSalary(){
         return salary;
     }
-    @Override
+   //we do not need to call the toString function java by default calls it
     public String toString(){
         return "Employee [id =" + id + " , name = " + name + "  , email = " +  email + ", salary =" +  salary +"]";
     }
+    //to call other function we have to directly call it during printing
   public String descTable(){
     return "Employee [field =" + field + " , type = " + type + "  , null = " +  Null + ", key =" +  key + ",Defaut = " + Default + "  extra = " + extra+  "]";
     
